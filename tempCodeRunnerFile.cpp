@@ -1,1 +1,1 @@
-cout<<"Vallue of key is "<<array[i]<<"->value of j is "<<j<<endl;
+prev

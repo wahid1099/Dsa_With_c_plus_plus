@@ -21,21 +21,23 @@ int binarySearch(int array[],int x,int lb,int ub){
 int main()
 {
  
-int size ;
- cout<<"Enter array size: ";
+// int size ;
+//  cout<<"Enter array size: ";
 
-cin>>size;
+// cin>>size;
 
-int array[size];
-cout<<"Enter array elemets: ";
+// int array[size];
+// cout<<"Enter array elemets: ";
+int array[]={1,2,9,11,17,24,31,32,45};
+int size=10;
 
-for (int i=0;i<size;i++){
-    cin>>array[i];
-}
+// for (int i=0;i<size;i++){
+//     cin>>array[i];
+// }
 
-int checkvalue;
-cout<<"lease enter the value you want to search: ";
-cin >>checkvalue;
+int checkvalue=6;
+// cout<<"lease enter the value you want to search: ";
+// cin >>checkvalue;
 int indexNumber;
 indexNumber=binarySearch(array,checkvalue,0,size-1);
 cout<<"index no : "<<indexNumber<<"Position No "<<indexNumber+1<<endl;

@@ -43,7 +43,7 @@ for(int i = 1; i <6; i++){
 
   }
   cout <<endl;
-  //if(flag==0) break;
+  if(flag==0) break;
 }
 cout << "After  sorting array: ";
 printArray(array,6);
