@@ -314,6 +314,8 @@ void deletionByvalueunq(Node * & head, int val) {
   deleteAtspecifiedPostion(head, position);
 }
 
+
+//reversing linked list
 int main() {
   Node * head = NULL;
   int n, pos, key, Indexpos, midvalue;
