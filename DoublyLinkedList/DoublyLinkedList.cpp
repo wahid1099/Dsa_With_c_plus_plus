@@ -122,7 +122,146 @@ void displayReverse(doublyNode * &head){
     }
 
     //searching for values in
-    void searchUniqueValue()
+    int searchUniqueValue(doublyNode *&head,int val){
+       
+
+        if(head==NULL){
+           
+            return -1;
+        }
+         doublyNode *temp = head;
+         int index=1;
+         while(temp->value !=  val){
+            if(temp->next==NULL){
+                return -1;
+            }
+            temp = temp->next;
+            index++;
+         }
+
+         return index;
+      }
+
+
+      //search duplicate values
+      void searchduplicateValue(doublyNode *&head , int key){
+         if(head==NULL){
+           cout<<"Linked list is empty!";
+            return;
+        }
+
+        int size=countLength(head);
+        int position[size+1],k=1;
+        int count=1;
+        int flag=0;
+        doublyNode *temp = head;
+
+        while(temp != NULL){
+
+            if(temp->value == key){
+                position[k] = count;
+                k++;
+                flag = 1;
+            }
+        temp = temp->next;
+            count++;
+        }
+
+        if(flag==0){
+             cout<<"The search value is not in the list";
+        }else{
+           for(int i=1;i<k;i++){
+                cout<<position[i];
+                if(i<k-1) cout<<",";
+
+            }
+            cout<<endl;
+        }
+      }
+      //deletion at head of list
+
+      void deleteHead(doublyNode *&head){
+        if(head!=NULL){
+        doublyNode *temp = head;
+        head=temp->next;
+        head->prev = NULL;
+         delete temp;
+        
+        
+        }else{
+            cout<<"The linked list is empty!"<<endl;
+        }
+
+       
+
+
+      }
+
+      //delete tail
+
+      void deleteTail(doublyNode *&head){
+        doublyNode *temp =head;
+
+        if(temp!=NULL && temp->next->next != NULL){
+            while(temp->next->next != NULL){
+                temp=temp->next;
+            }
+             doublyNode *delNode=temp->next;
+             temp->next=NULL;
+             delete delNode;
+        }
+        else{
+            if(temp==NULL){
+                cout<<"Linked list is empty!"<<endl;
+            }else{
+                deleteHead(head);
+                
+            }
+        }
+      }
+
+      //delete at specified position
+
+      void deleteatspecificpos(doublyNode *&head,int position){
+
+        doublyNode *temp = head;
+        if(temp != NULL && position<=countLength(head)){
+            if(position==1){
+                deleteHead(head);
+            }else if(position==countLength(head)){
+                deleteTail(head);
+            }else{
+                int i=1;
+                while(i<position-1){
+                    temp=temp->next;
+                }
+                doublyNode *delNode=temp->next;
+                doublyNode *temp2=temp->next->next;
+                temp2->prev=temp;
+                temp->next=delNode->next;
+                delete delNode;
+
+            }
+
+        }
+        else{
+            if(position>countLength(head)){
+                cout<<"Position out of bound";
+            }else{
+                 cout<<"There is no value in linked list ";
+            }
+        }
+      }
+
+      void deletebyValue(doublyNode *&head,int value){
+         int position;
+         position=searchUniqueValue(head,value);
+         if(position==-1){
+        cout<<"Value is not found in linked list";
+       }else{
+        deleteatspecificpos(head,position);
+     }
+      }
 int main()
 {
     doublyNode *head=NULL;
@@ -135,7 +274,13 @@ int main()
        <<"Choice 4:Display all the value"<<endl
        <<"Choice 5:Display all the value in reverse"<<endl
        <<"Choice 6:Insertion at specific position"<<endl
-       <<"Choice 0:Exit";
+       <<"Choice 7:Serch value (Unique list)"<<endl
+       <<"Choice 8:Serch value (Duplicate list)"<<endl
+       <<"Choice 9:Delete Head"<<endl
+       <<"Choice 10:Delete Tail"<<endl
+       <<"Choice 11:Delete at specific position"<<endl
+       <<"Choice 12:Delete by value (unique list)"<<endl
+       <<"Choice 0:Exit"<<endl;
        
        cout<<"Next choice :";
        cin>>choice;
@@ -178,9 +323,50 @@ int main()
            cout<<"Enter the value :";
            cin>>value;
            insetionAtSpostion(head,pos,value);
-           
+            break;
+          
+           case 7:
+           cout<<"Enter the value to search :";
+           cin>>value;
+         Indexpos=  searchUniqueValue(head,value);
 
- 
+         if(Indexpos == -1){
+         cout<<"There is no value in the linked list!"<<endl;
+         }else{
+            cout<<"The value is found at"<<Indexpos<<endl;
+         }
+         break;
+
+         case 8:
+         cout<<"Enter the value to search :";
+         cin>>value;
+         cout<<"The Number is at position :";
+         searchduplicateValue(head,value);
+         break;
+
+         case 9:
+         deleteHead(head);
+         cout<<"Head deleted!"<<endl;
+         break;
+
+         case 10:
+         deleteTail(head);
+         cout<<"Tail deleted!"<<endl;
+         break;
+
+         case 11:
+         cout<<"Enter the position of the delete position: ";
+         cin>>pos;
+         deleteatspecificpos(head,pos);
+         break;
+
+         case 12:
+         cout<<"Enter the value to delete :";
+         cin>>value;
+         deletebyValue(head,value);
+
+         break;
+
           default:
           break;
 
