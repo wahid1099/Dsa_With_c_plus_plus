@@ -98,6 +98,31 @@ void displayReverse(doublyNode * &head){
     cout<<endl;
     
     }
+
+
+    void insetionAtSpostion(doublyNode *&head,int pos,int val){
+        int i=0;
+   
+    doublyNode *temp=head;
+    doublyNode *temp2;
+
+    while(i<pos-2){
+        temp=temp->next;
+        i++;
+    } 
+    doublyNode *newnode= new doublyNode(val);
+
+    temp2=temp->next;
+
+    
+     temp->next=newnode;    
+    temp2->prev=newnode;
+    newnode->prev=temp;
+    newnode->next=temp2;
+    }
+
+    //searching for values in
+    void searchUniqueValue()
 int main()
 {
     doublyNode *head=NULL;
@@ -109,6 +134,7 @@ int main()
        <<"Choice 3:Count The length of the list"<<endl
        <<"Choice 4:Display all the value"<<endl
        <<"Choice 5:Display all the value in reverse"<<endl
+       <<"Choice 6:Insertion at specific position"<<endl
        <<"Choice 0:Exit";
        
        cout<<"Next choice :";
@@ -146,6 +172,15 @@ int main()
           cout<<endl;
            break;
 
+           case 6:
+           cout<<"Enter the position :";
+           cin>>pos;
+           cout<<"Enter the value :";
+           cin>>value;
+           insetionAtSpostion(head,pos,value);
+           
+
+ 
           default:
           break;
 

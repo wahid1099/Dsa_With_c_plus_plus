@@ -298,7 +298,7 @@ void deleteAtspecifiedPostion(Node * & head, int postion) {
     }
 
   } else {
-    if (position > CountLength(head)) {
+    if (postion > CountLength(head)) {
       cout << "Position out of bound";
     } else {
       cout << "There is no value in linked list ";
@@ -316,6 +316,42 @@ void deletionByvalueunq(Node * & head, int val) {
 
 
 //reversing linked list
+
+// Node *reverseLinkedList(Node *&head){
+//   Node *current,*nextnode,*prev;
+//   current = head;
+//   prev=NULL;
+//   while(current!=NULL){
+//     nextnode = current->Next;
+//     current=prev;
+//     prev=current;
+//     current=nextnode;
+//   }
+//   head = current;
+//   return head;
+
+// }
+
+Node *reverseLinkedList(Node *&head){
+  Node *prev=NULL;
+  Node *current=head;
+  if(head == NULL || head-> Next==NULL){
+    cout<<"The linked list is empty!"<<endl;
+    return head;
+
+  }
+
+  Node *next = head->Next;//1->2
+  while(true){
+    current->Next = prev;//1->Null--2-->1 3->2
+    prev=current;//null->1 --2 3
+    current=next;
+    if(current==NULL)
+    break;
+    next=next->Next;//2->next value 3
+  }
+  return prev;
+}
 int main() {
   Node * head = NULL;
   int n, pos, key, Indexpos, midvalue;
@@ -328,7 +364,7 @@ int main() {
   cout << "Choice 11:Insertion after a specific value(unique list)" << endl << "Choice 12:Insertion after a specific value(unique list)" << endl;
   cout << "Choice 13:Delete head !" << endl << "Choice 14:Delete tail !" << endl;
   cout << "Choice 15:Display Linkedlist !" << endl << "Choice 16:Delete At specific postion !" << endl;
-  cout << "Choice 17:Deletion By value !" << endl << "Choice 18:Delete At specific postion !" << endl;
+  cout << "Choice 17:Deletion By value !" << endl << "Choice 18:Reversing the Linked list !" << endl;
   cout << "Choice 0:Exit" << endl;
   int choice;
   cout << "Next Choice:";
@@ -460,6 +496,11 @@ int main() {
       cin >> delValue;
       deletionByvalueunq(head, delValue);
       break;
+
+      case 18:
+     head= reverseLinkedList(head);
+      cout<<"After reverseLinkedList :";
+      display(head);
 
     default:
       break;
