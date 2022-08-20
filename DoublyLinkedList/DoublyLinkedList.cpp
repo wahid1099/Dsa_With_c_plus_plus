@@ -99,7 +99,7 @@ void displayReverse(doublyNode * &head){
     
     }
 
-
+///////////
     void insetionAtSpostion(doublyNode *&head,int pos,int val){
         int i=0;
    
@@ -262,6 +262,50 @@ void displayReverse(doublyNode * &head){
         deleteatspecificpos(head,position);
      }
       }
+
+      /////////////
+      int findMidValue(doublyNode *&head){
+         if(head==NULL){
+            return -1;
+        }
+        doublyNode *slow=head;
+        doublyNode *fast=head;
+        while(fast->next != NULL && fast->next->next != NULL){
+            slow=slow->next;
+            fast=fast->next->next;
+        }
+
+        return slow->value;
+      }
+
+//reversing untill given index 
+
+//reversing doubly linked List
+
+void displayReverseIndex(doublyNode * &head,int index){
+    doublyNode *temp=head;
+    int i=1;
+
+    while(i!=index){
+        temp=temp->next;
+        i++;
+    }
+
+
+    while(temp!=NULL){
+        cout<<temp->value;
+        if(temp->prev!=NULL){
+            cout<<" ---> ";
+            
+        }
+        temp=temp->prev;
+
+
+
+    }
+    cout<<endl;
+    
+    }
 int main()
 {
     doublyNode *head=NULL;
@@ -280,6 +324,8 @@ int main()
        <<"Choice 10:Delete Tail"<<endl
        <<"Choice 11:Delete at specific position"<<endl
        <<"Choice 12:Delete by value (unique list)"<<endl
+       <<"Choice 13:Find mid value"<<endl
+       <<"Choice 14::Display all the value in reverse till given index"<<endl
        <<"Choice 0:Exit"<<endl;
        
        cout<<"Next choice :";
@@ -366,6 +412,21 @@ int main()
          deletebyValue(head,value);
 
          break;
+
+         case 13:
+         int mid;
+         mid=findMidValue(head);
+         if(mid==-1){
+            cout<<"No value found!";
+         }else{
+           cout<<"The mid value is "<<mid<<endl;
+         }
+         
+       case 14:
+       cout<<"Ener the index to reverse is ";
+       cin>>Indexpos;
+      displayReverseIndex(head,Indexpos);
+      break;
 
           default:
           break;
