@@ -3,22 +3,22 @@
 using namespace std;
 
 
-class Node{
+template<typename N> class Node{
     public:
-    int value;
+    N value;
     Node* next;
     Node* prev;
-    Node(int val){
+    Node(N val){
         value = val;
         next=NULL;
         prev=NULL;
     }
-}
+};
 
-
-class Stack{
-    Node *head;
-    Node *top;
+//stack st--> 
+template<typename S>  class Stack{
+    Node <S>*head;
+    Node <S>*top;
        int count=0;
     public:
 
@@ -27,8 +27,8 @@ class Stack{
         top=NULL;
     }
     //push
-    void push(int val) {
-        Node *newnode = new Node(val);
+    void push(S val) {
+        Node <S> *newnode = new Node<S>(val);
         if(head==NULL){
             head=top=newnode;
              count++;
@@ -40,10 +40,10 @@ class Stack{
          count++;
     }
     //pop
-    int pop() {
-        Node *delnode ;
-        delNode=top;
-        int chk=-1;
+    S pop() {
+        Node <S> *delnode ;
+        delnode=top;
+        S chk;
           if(head==NULL){
             cout<<"stack underflowed"<<endl;
            
@@ -72,21 +72,24 @@ class Stack{
        return count;
     }
     //top
-    int top{
+    S Top(){
+        S chk;
         if(top==NULL){
            cout<<"stack underflowed! there is no element on top"<<endl;
         }
         else{
-            return top->value;
+            chk=top->value;
+            
         }
+        return chk;
     }
 
 };
-int main()
-{
+// int main()
+// {
  
 
  
  
-  return 0;
-}
+//   return 0;
+// }
