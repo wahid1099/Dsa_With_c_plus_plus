@@ -12,28 +12,39 @@ int main()
 
 
  for (int i=0; i< t; i++){
+   
     cin>>number[i];
     
     
  }
 
+   int maxvalue=number[0];
+
+    for (int i=0; i< t; i++){
+   
+    if(maxvalue<number[i]){
+      maxvalue=number[i];
+    }
+    
+    
+ }
   
 
- int maxvalue=number[0];
- int count[t+1]={0};
+
+  int count[maxvalue+1]={0};
 
 
  for(int i=0; i <t;i++){
     count[number[i]]++;
-    if(number[i]>maxvalue){
-        maxvalue=number[i];
-    }
+ 
  }
 
 
- for (int i=1; i<=maxvalue; i++){
+
+
+ for (int i=0; i<=maxvalue; i++){
    
-    if(count[i]>0){
+    if(count[i]>0 ){
         cout<<i<<"=>"<<count[i]<<endl;
     }
  }
