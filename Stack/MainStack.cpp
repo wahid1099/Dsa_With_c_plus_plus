@@ -1,6 +1,6 @@
 // #include<iostream>
 #include<bits/stdc++.h>
-#include"mystack.h"
+#include"WahidStack.h"
 using namespace std;
 
 
@@ -72,20 +72,37 @@ int main()
  
 
 
- Stack <person> st;
- person a("Md wahid",1500);
- person b("Md wahid",1500);
- person c("Md wahid",1500);
- st.push(a);
- st.push(b);
- st.push(c);
- while(!st.empty()){
-  person printobj;
-  printobj=st.pop();
-  printobj.print();
+//  Stack <person> st;
+//  person a("Md wahid",1500);
+//  person b("Md wahid",1500);
+//  person c("Md wahid",1500);
+//  st.push(a);
+//  st.push(b);
+//  st.push(c);
+//  while(!st.empty()){
+//   person printobj;
+//   printobj=st.pop();
+//   printobj.print();
   
- }
+//  }
 
- st.Top();
+//  st.Top();
+Stack <int>st;
+// st.push(1);
+
+// st.push(2);
+// st.push(3);
+// //if(!st.empty())cout<<st.Top()<<endl;
+// st.push(4);
+st.push(5);
+st.push(5);
+st.push(5);
+st.push(5);
+
+st.pop();
+st.Top();
+st.midV();
+cout<<st.size()<<endl;
+
   return 0;
 }

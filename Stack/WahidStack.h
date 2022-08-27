@@ -19,7 +19,7 @@ template<typename N> class Node{
 template<typename S>  class Stack{
     Node <S>*head;
     Node <S>*top;
-    Node <S> *mid;
+    Node <S>* mid;
        int count=0;
     public:
 
@@ -28,26 +28,22 @@ template<typename S>  class Stack{
         top=NULL;
         mid=NULL;
     }
-     
     //push
     void push(S val) {
         Node <S> *newnode = new Node<S>(val);
-        //////
-       
-       // int count=0;
         if(head==NULL){
             head=top=newnode;
+            mid=newnode;
              count++;
-             mid=head;
             return;
         }
         top->next = newnode;
         newnode->prev =top;
         top=newnode;
-         count++;
-         if(count%2==0){
-            mid=mid->prev;
-         }
+        if(count %2==1){
+            mid=mid->next;
+        }
+         count++; 
     }
     //pop
     S pop() {
@@ -56,7 +52,7 @@ template<typename S>  class Stack{
         S chk;
           if(head==NULL){
             cout<<"stack underflowed"<<endl;
-           
+            mid=NULL;
             return chk;
           }
         if(top==head){
@@ -64,28 +60,27 @@ template<typename S>  class Stack{
         }else{
             top=delnode->prev;
             top->next=NULL;
+            
         }
 
         chk=delnode->value;
-        count--;
-        if(count%2!=0){
-            mid=mid->next;
-        }
+        if(count %2==0){
+                mid=mid->prev;
+            }
         delete delnode;
-         
+         count--;
         return chk;
 
     }
-    //find mid
-    // S Mid(){
-    //     S midvalue;
-    //     if(count==0){
-    //         cout<<"Stack is empty!"<<endl;
-    //         return -1;
-    //     }
-    //     midvalue=mid->value;
-    //     return midvalue;
-    // }
+
+    //mid value
+    S midV(){
+        if(count==0){
+            cout<<"No mid value";
+            return -1;
+        }
+        return mid->value;
+    }
     //empty
     bool empty() {
         if(head==NULL) return true;
