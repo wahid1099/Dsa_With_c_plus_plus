@@ -75,12 +75,14 @@ template<typename S>  class Stack{
 
     //mid value
     S midV(){
+        S chk;
         if(count==0){
             cout<<"No mid value";
-            return -1;
+            return chk;
         }
-        return mid->value;
-    }
+        chk=mid->value;
+        return chk;
+         }
     //empty
     bool empty() {
         if(head==NULL) return true;

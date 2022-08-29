@@ -1,6 +1,7 @@
 // #include<iostream>
 #include<bits/stdc++.h>
-#include"WahidStack.h"
+// #include"WahidStack.h"
+#include "demostack.h"
 using namespace std;
 
 
@@ -72,14 +73,24 @@ int main()
  
 
 
-//  Stack <person> st;
-//  person a("Md wahid",1500);
+ Stack <person> st;
+ person a("Md wahid",1500);
+ person b("Md wahid",1700);
+//  person c("Md wahid",1800);
+ person d("Md wahid",2000);
+
+
+//  person e("Md wahid",4000);
 //  person b("Md wahid",1500);
 //  person c("Md wahid",1500);
-//  st.push(a);
+ st.push(a);
+ st.push(b);
+//  st.push(c);
+ st.push(d);
+//  st.push(e);
 //  st.push(b);
 //  st.push(c);
-//  while(!st.empty()){
+// //  while(!st.empty()){
 //   person printobj;
 //   printobj=st.pop();
 //   printobj.print();
@@ -87,21 +98,25 @@ int main()
 //  }
 
 //  st.Top();
-Stack <int>st;
+// Stack <int>st;
 // st.push(1);
 
 // st.push(2);
 // st.push(3);
 // //if(!st.empty())cout<<st.Top()<<endl;
 // st.push(4);
-st.push(5);
-st.push(5);
-st.push(5);
-st.push(5);
+// st.push(5);
+// st.push(5);
+// st.push(5);
+// st.push(5);
 
-st.pop();
-st.Top();
-st.midV();
+// st.pop();
+// st.Top();
+// st.Top();
+cout <<"mid is "<<endl;
+person printfObj;
+printfObj=st.mid();
+printfObj.print();
 cout<<st.size()<<endl;
 
   return 0;

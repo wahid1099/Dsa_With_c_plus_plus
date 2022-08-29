@@ -1,7 +1,7 @@
 // #include<iostream>
 #include<bits/stdc++.h>
 using namespace std;
-
+stack
 
 template<typename T>T mymax(T a,T b){
     return (a>b)?a:b;
