@@ -1,7 +1,7 @@
 // #include<iostream>
 #include<bits/stdc++.h>
 using namespace std;
-//this head file is ok
+
 
 template<typename N> class Node{
     public:

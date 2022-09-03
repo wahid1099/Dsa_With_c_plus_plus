@@ -1,1 +1,1 @@
-infix
+#include "Mystack.h"

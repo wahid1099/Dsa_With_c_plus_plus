@@ -48,7 +48,7 @@ int prefixEvalutaion(string checkvalue){
 }
 int main()
 {
- cout<<"Prefix = "<<prefixEvalutaion("+*423")<<endl<<endl;
+ cout<<"Prefix = "<<prefixEvalutaion("*+69-31")<<endl<<endl;
 
  
  

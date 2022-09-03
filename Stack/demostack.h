@@ -1,117 +1,116 @@
+// #include<iostream>
 #include<bits/stdc++.h>
 using namespace std;
+//this head file is ok
 
-// doubly linked list
-template<typename N> class Node
-{
-public:
-    N data;
-    Node* prev;
+template<typename N> class Node{
+    public:
+    N value;
     Node* next;
-    Node(N data)
-    {
-        this->data = data;
-        prev = NULL;
-        next = NULL;
+    Node* prev;
+    Node(N val){
+        value = val;
+        next=NULL;
+        prev=NULL;
     }
 };
-// Stack<int> st
-template<typename S> class Stack
-{
-public:
-    Node<S> *top;
-    Node<S> *head;
-    Node <S> *midValue;
-    int count;
-public:
-    Stack()
-    {
-        top = NULL;
-        head = NULL;
-        midValue= NULL;
-        count = 0;
+
+//stack st--> 
+template<typename S>  class Stack{
+    Node <S>*head;
+    Node <S>*top;
+    Node <S>* mid;
+       int count=0;
+    public:
+
+    Stack(){
+        head=NULL;
+        top=NULL;
+        mid=NULL;
     }
-    // PUSH
-    void push(S val)
-    {
-        Node<S> *newNode = new Node(val);
-        count++;
-        if(head == NULL )
-        {
-            head = top = newNode;
-            midValue=newNode;
+    //push
+    void push(S val) {
+        Node <S> *newnode = new Node<S>(val);
+        if(head==NULL){
+            head=top=newnode;
+            mid=newnode;
+             count++;
             return;
         }
-        top->next = newNode;
-        newNode->prev = top;
-        top = newNode;
+        top->next = newnode;
+        newnode->prev =top;
+        top=newnode;
         if(count %2==1){
-            midValue=midValue->next;
+            mid=mid->next;
         }
+         count++; 
     }
-
-    // POP
-     S pop()
-    {
-        // there is two corner case
-        // 1. one element
-        // 2. no element
-
-        Node<S> *delNode = top;
+    //pop
+    S pop() {
+        Node <S> *delnode ;
+        delnode=top;
         S chk;
-        if(head == NULL){
-            cout<<"Stack Underflow"<<endl;
-             midValue=NULL;
+          if(head==NULL){
+            cout<<"stack underflowed"<<endl;
+            mid=NULL;
             return chk;
+          }
+        if(top==head){
+            head=top=NULL;
+        }else{
+            top=delnode->prev;
+            top->next=NULL;
+            
         }
-        if(top == head)
-        {
-            head = top = NULL;
-        }
-        else
-        {
-            top = delNode->prev;
-            top->next = NULL;
-        }
-        chk = delNode->data;
-        count--;
-        delete delNode;
+
+        chk=delnode->value;
         if(count %2==0){
-            midValue=midValue->prev;
-        }
+                mid=mid->prev;
+            }
+        delete delnode;
+         count--;
         return chk;
 
     }
 
-    S mid(){
-         S chk;
+    //mid value
+    S midV(){
+        S chk;
         if(count==0){
             cout<<"No mid value";
             return chk;
         }
-          chk=midValue->data;
-
+        chk=mid->value;
         return chk;
-    }
-    // EMPTY
-    bool isEmpty(){
-        if(head== NULL) return true;
+         }
+    //empty
+    bool empty() {
+        if(head==NULL) return true;
         else return false;
     }
-    // SIZE
-    int size(){
-        return count;
+    //size
+    int size() {
+       return count;
     }
-    // TOP
+    //top
     S Top(){
         S chk;
-        if(top == NULL){
-            cout<<"Stack Underflow | There is no element in stack"<<endl;
+        if(top==NULL){
+           cout<<"stack underflowed! there is no element on top"<<endl;
         }
         else{
-            chk = top->data;
+            chk=top->value;
+            
         }
         return chk;
     }
 
 };
+// int main()
+// {
+ 
+
+ 
+ 
+//   return 0;
+// }
