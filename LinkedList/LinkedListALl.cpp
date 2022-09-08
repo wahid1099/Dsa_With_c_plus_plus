@@ -365,6 +365,7 @@ int main() {
   cout << "Choice 13:Delete head !" << endl << "Choice 14:Delete tail !" << endl;
   cout << "Choice 15:Display Linkedlist !" << endl << "Choice 16:Delete At specific postion !" << endl;
   cout << "Choice 17:Deletion By value !" << endl << "Choice 18:Reversing the Linked list !" << endl;
+  cout << "Choice 19:print value" << endl << "Choice 20:nothing !" << endl;
   cout << "Choice 0:Exit" << endl;
   int choice;
   cout << "Next Choice:";
@@ -501,6 +502,11 @@ int main() {
      head= reverseLinkedList(head);
       cout<<"After reverseLinkedList :";
       display(head);
+        
+      case 19:
+      cout<<"value is : ";
+      cout<<head->Next->Next->value<<end;
+      break;
 
     default:
       break;
