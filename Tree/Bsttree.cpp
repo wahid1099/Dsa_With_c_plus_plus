@@ -25,7 +25,7 @@ void printTree(treeNode *root,int level);
 void inOrder(treeNode *root,string chk){
     if(root==NULL) return;
     inOrder(root->leftChild,chk);
-    chk+=to_string(root->data);
+    chk+=(to_string(root->data)+" ");
     inOrder(root->rightChild,chk);
 }
 
@@ -121,53 +121,41 @@ int levelOrderTraversal(treeNode *root, string chk,int k){
     return max;
 }
 
+treeNode *intertionBST(treeNode *root,int value){
+    treeNode *newNode=new treeNode(value);
+    if(root==NULL){
+        root=newNode;
+        return root;
+    }
+
+    //value < root-> data->
+    if(value < root->data ){
+        root->leftChild=intertionBST(root->leftChild,value);
+
+    }
+
+    // value > root-> data->
+    else if(value>root->data){
+        root->rightChild=intertionBST(root->rightChild,value);
+
+    }
+    return root;
+
+}
+
 int main()
 {
  int n;
 cin>>n;
-
-treeNode *allNode[n];
-for(int i=0;i<n;i++){
-    allNode[i]=new treeNode(-1);
+treeNode *root=NULL;
+for(int i=0; i <n; i++){
+    int value;
+    cin>>value;
+    root=intertionBST(root,value);
 }
-
- for(int i=0;i<n;i++){
-    int value,left,right;
-    cin>>value>>left>>right;
-    allNode[i]->data=value;
-
-    if(left>n-1 || right>n-1){
-        cout<<"Invalid Index"<<endl;
-        break;
-    }
-
-    if(left!=-1){
-        allNode[i]->leftChild=allNode[left];
-    }
-    if(right!=-1){
-        allNode[i]->rightChild=allNode[right];
-    }
- }
-
- string levelorder="";
-int level=2;
- //printTree(allNode[0],0);
-int maxvalueatk= levelOrderTraversal(allNode[0],levelorder,level);
-cout<<"Max value at "<<maxvalueatk<<endl<<endl;
-
-//  string inOrdertraversal=" ";
-//  string preordertraversal="";
-//  string postordertraversal="";
-
-
-
-//  inOrder(allNode[0],inOrdertraversal);
-//  preOrder(allNode[0],preordertraversal);
-//  postorder(allNode[0],postordertraversal);
-
-// cout<<"Inorder Traversal : "<<inOrdertraversal<<endl;
-// cout<<"Preorder Traversal : "<<preordertraversal<<endl;
-// cout<<"Postorder Traversal : "<<postordertraversal<<endl;
+ string traversalString="";
+ traversalString=inOrder(root,traversalString);
+ cout<<traversalString<<endl;
   return 0;
 }
 

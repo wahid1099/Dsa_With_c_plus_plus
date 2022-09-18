@@ -1,7 +1,6 @@
 // #include<iostream>
 #include<bits/stdc++.h>
 using namespace std;
-
 class treeNode{
     public:
     int data;
@@ -25,7 +24,7 @@ void printTree(treeNode *root,int level);
 void inOrder(treeNode *root,string chk){
     if(root==NULL) return;
     inOrder(root->leftChild,chk);
-    chk+=to_string(root->data);
+    chk+=to_string(root->data)+" ";
     inOrder(root->rightChild,chk);
 }
 
@@ -83,7 +82,7 @@ void spacePrint(int level){
 
 int levelOrderTraversal(treeNode *root, string chk,int k){
     if(root==NULL) return -1;
-    
+
     int level=0;
 
     queue <treeNode*> q;
@@ -121,64 +120,97 @@ int levelOrderTraversal(treeNode *root, string chk,int k){
     return max;
 }
 
-int main()
-{
- int n;
-cin>>n;
+treeNode *intertionBST(treeNode *root,int value){
+    treeNode *newNode=new treeNode(value);
+    if(root==NULL){
+        root=newNode;
+        return root;
+    }
 
-treeNode *allNode[n];
-for(int i=0;i<n;i++){
-    allNode[i]=new treeNode(-1);
+    //value < root-> data->
+    if(value < root->data ){
+        root->leftChild=intertionBST(root->leftChild,value);
+
+    }
+
+    // value > root-> data->
+    else if(value>root->data){
+        root->rightChild=intertionBST(root->rightChild,value);
+
+    }
+    return root;
+
 }
 
- for(int i=0;i<n;i++){
-    int value,left,right;
-    cin>>value>>left>>right;
-    allNode[i]->data=value;
-
-    if(left>n-1 || right>n-1){
-        cout<<"Invalid Index"<<endl;
-        break;
+treeNode *searchbst(treeNode *root,int value){
+    if(root==NULL){
+        cout<<root->data;
+        return NULL;
     }
+    if(root->data==value){
+        return root;
+    }else if(value <root->data){
+        searchbst(root->leftChild,value);
 
-    if(left!=-1){
-        allNode[i]->leftChild=allNode[left];
+    }else if(value> root->data){
+         searchbst(root->rightChild,value);
+        
     }
-    if(right!=-1){
-        allNode[i]->rightChild=allNode[right];
+}
+
+treeNode *deletionBST(treeNode *root,int value){
+    // if(root==NULL) return NULL;
+    if(value < root->data){
+        root->leftChild=deletionBST(root->leftChild,value);
+
+    }else if(value > root->data){
+        root->rightChild=deletionBST(root->rightChild,value);
+    }else{
+        //third case
+        if(root->leftChild ==NULL){
+            treeNode *temp=root->rightChild;
+            free(root);
+            return temp;
+        }
+        else if(root->rightChild ==NULL){
+            treeNode *temp=root->leftChild;
+            free(root);
+            return temp;
+        }else{
+            treeNode *temp=root->rightChild;
+
+        }
     }
- }
+}
+int main()
+{
 
- string levelorder="";
-int level=2;
- //printTree(allNode[0],0);
-int maxvalueatk= levelOrderTraversal(allNode[0],levelorder,level);
-cout<<"Max value at "<<maxvalueatk<<endl<<endl;
+int n;
+cin>>n;
+treeNode *root=NULL;
+for(int i=0; i <n; i++){
+    int value;
+    cin>>value;
+    root=intertionBST(root,value);
+}
 
-//  string inOrdertraversal=" ";
-//  string preordertraversal="";
-//  string postordertraversal="";
+int key;
+cout<<"Enter key: ";
+cin>>key;
+if(searchbst(root,key)==NULL){
+    cout<<"Value not found";
+}else{
+    cout<<"Value found!";
+}
+ string traversalString="";
+inOrder(root,traversalString);
+ cout<<traversalString;
 
 
 
-//  inOrder(allNode[0],inOrdertraversal);
-//  preOrder(allNode[0],preordertraversal);
-//  postorder(allNode[0],postordertraversal);
-
-// cout<<"Inorder Traversal : "<<inOrdertraversal<<endl;
-// cout<<"Preorder Traversal : "<<preordertraversal<<endl;
-// cout<<"Postorder Traversal : "<<postordertraversal<<endl;
   return 0;
 }
 
 
 // 9
-// 0 1 2
-// 1 3 4
-// 2 5 6
-// 3 - 1 -1
-// 4 -1 -1
-// 5 7 8
-// 6 -1 -1
-// 7 -1 -1
-// 8 -1 -1
+// 11 5 9 43 34 1 2 7 21
