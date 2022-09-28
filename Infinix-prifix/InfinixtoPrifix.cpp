@@ -48,7 +48,7 @@ string infixtoPrifix(string chk){
     while(!st.empty()){
         result+=st.pop();
     }
-
+           cout<<"Result is "<<result<<endl;
     reverse(result.begin(), result.end());
     return result;
 }
@@ -57,14 +57,18 @@ int main()
  
 
  
- string infix="(7+(4*5))-(2+0)";
+ string infix="(5*((6^2)+(7-(2/6))))-((7*(8+1))+(5*4))";
+
  string prefix;
-  cout<<"Before: "<<prefix<<endl;
+  cout<<"Before: "<<infix<<endl;
 
  prefix=infixtoPrifix(infix);
 
 cout<<"After Infix to Prifix Evaluation: ";
  cout<<prefix<<endl<<endl;
+
+  reverse(infix.begin(),infix.end());
+cout<<"Reverse"<< infix<<endl;
  
   return 0;
 }

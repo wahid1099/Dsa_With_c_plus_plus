@@ -48,9 +48,13 @@ int prefixEvalutaion(string checkvalue){
 }
 int main()
 {
- cout<<"Prefix = "<<prefixEvalutaion("*+69-31")<<endl<<endl;
+ cout<<"Prefix = "<<prefixEvalutaion("-*5+^62-7/26+*7+81*54")<<endl<<endl;
 
+ string chk="-*5+^62-7/26+*7+81*54";
+ reverse(chk.begin(), chk.end());
+ cout<<endl;
  
+ cout<<"Revers "<<chk<<endl<<endl;
  
   return 0;
 }
