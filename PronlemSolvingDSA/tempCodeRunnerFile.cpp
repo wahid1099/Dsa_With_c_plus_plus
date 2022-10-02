@@ -1,1 +1,1 @@
-sortStack
+q=pow(2,n-1);
