@@ -41,7 +41,7 @@ int save;
     
     cin >> a >> b;
     if(i==0){
-      save=b;
+      save=a;
     }
     v[a].push_back(b);
     v[b].push_back(a);

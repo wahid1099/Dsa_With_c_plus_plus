@@ -1,3 +1,6 @@
- if(parent.first==key || parent.second==key){
-        //    cout<<parent.first<<" "<<parent.second<<endl;
-        // }
+4 5
+1 2
+1 3
+2 4
+2 3
+4 3
